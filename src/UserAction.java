@@ -14,112 +14,39 @@ public class UserAction {
         }
 
         if (escolha == 0) {
-                for (int i = 0; i < 2; i++) {
-                    int dmg = 5;
-                    diceNumber = gerador.nextInt(1, dmg);
-                    System.out.print("[" + diceNumber + "]");
-                    totalDamage += diceNumber;
-                    if(diceNumber == 4){
-                        countDice += 1;
-                    }
-                }
-                if(countDice == 2){
-                    System.out.println();
-                    System.out.println("Dano critico!");
-                    for (int i = 0; i < 2; i++) {
-                        int dmg = 5;
-                        diceNumber = gerador.nextInt(1, dmg);
-                        System.out.print("[" + diceNumber + "]");
-                        totalDamage += diceNumber;
-                    }
-                }
+                totalDamage = Actions.calculoDano(2, 5, totalDamage, gerador);
+
                 System.out.println();
                 System.out.println("Dano total: " + totalDamage + " + " + bonusDmg);
                 totalDamage += bonusDmg;
                 System.out.println();
         } else if (escolha == 1) {
-            for (int i = 0; i < 1; i++) {
-                int dmg = 9;
-                diceNumber = gerador.nextInt(1, dmg);
-                System.out.print("[" + diceNumber + "]");
-                totalDamage += diceNumber;
-                if(diceNumber == 8){
-                    countDice += 1;
-                }
-            }
-            for (int i = 0; i < 1; i++) {
-                diceNumber = gerador.nextInt(1, 5);
-                System.out.print("[" + diceNumber + "]");
-                totalDamage += diceNumber;
-                if(diceNumber == 4){
-                    countDice += 1;
-                }
-            }
-            if(countDice == 2){
-                System.out.println();
-                System.out.println("Dano critico!");
-                for (int i = 0; i < 1; i++) {
-                    int dmg = 9;
-                    diceNumber = gerador.nextInt(1, dmg);
-                    System.out.print("[" + diceNumber + "]");
-                    totalDamage += diceNumber;
-                }
-                for (int i = 0; i < 1; i++) {
-                    diceNumber = gerador.nextInt(1, 5);
-                    System.out.print("[" + diceNumber + "]");
-                    totalDamage += diceNumber;
-                }
-            }
+
+                totalDamage = Actions.calculoDano(2, 8, totalDamage, gerador);
+
                 System.out.println();
                 System.out.println("Dano total: " + totalDamage + " + " + bonusDmg);
                 totalDamage += bonusDmg;
                 System.out.println();
         } else if (escolha == 2) {
-            for (int i = 0; i < 3; i++) {
-                int dmg = 7;
-                diceNumber = gerador.nextInt(1, dmg);
-                System.out.print("[" + diceNumber + "]");
-                totalDamage += diceNumber;
-                if(diceNumber == 6){
-                    countDice += 1;
-                }
-            }
-            if(countDice == 3){
-                System.out.println();
-                System.out.println("Dano Critico!");
-                for (int i = 0; i < 3; i++) {
-                    int dmg = 7;
-                    diceNumber = gerador.nextInt(1, dmg);
-                    System.out.print("[" + diceNumber + "]");
-                    totalDamage += diceNumber;
-                }
-            }
+
+                totalDamage = Actions.calculoDano(3, 7, totalDamage, gerador);
+
                 System.out.println();
                 System.out.println("Dano total: " + totalDamage + " + " + bonusDmg);
                 totalDamage += bonusDmg;
                 System.out.println();
         } else if (escolha == 3) {
-            int dmg = 9;
-            diceNumber = gerador.nextInt(1, dmg);
-            System.out.print("[" + diceNumber + "]");
-            totalDamage += diceNumber;
-            if(diceNumber == 8){
-                countDice += 1;
-            }
-            if (countDice == 1){
+
+                totalDamage = Actions.calculoDano(1, 9, totalDamage, gerador);
+
                 System.out.println();
-                System.out.println("Dano critico!");
-                diceNumber = gerador.nextInt(1, dmg);
-                System.out.print("[" + diceNumber + "]");
-                totalDamage += diceNumber;
-            }
-            System.out.println();
-            System.out.println("Dano total: " + totalDamage + " + " + bonusDmg);
-            totalDamage += bonusDmg;
-            System.out.println();
+                System.out.println("Dano total: " + totalDamage + " + " + bonusDmg);
+                totalDamage += bonusDmg;
+                System.out.println();
         } else {
-            System.out.println("Escolha inválida!");
-            return;
+                System.out.println("Escolha inválida!");
+                return;
         }
 
         atkAction2(gerador, personagem, totalDamage);
@@ -180,49 +107,17 @@ public class UserAction {
         }
 
         if (escolha == 0) {
-            for (int i = 0; i < 3; i++) {
-                int dmg = 7;
-                diceNumber = gerador.nextInt(1, dmg);
-                System.out.print("[" + diceNumber + "]");
-                totalDamage += diceNumber;
-                if(diceNumber == 6){
-                    countDice += 1;
-                }
-            }
-            if(countDice == 3){
-                System.out.println();
-                System.out.println("Dano critico!");
-                for (int i = 0; i < 3; i++) {
-                    int dmg = 7;
-                    diceNumber = gerador.nextInt(1, dmg);
-                    System.out.print("[" + diceNumber + "]");
-                    totalDamage += diceNumber;
-                }
-            }
+
+            totalDamage = Actions.calculoDano(3, 7, totalDamage, gerador);
+
             System.out.println();
             System.out.println("Dano total: " + totalDamage + " + " + bonusDmg);
             totalDamage += bonusDmg;
             System.out.println();
         } else if (escolha == 1) {
-            for (int i = 0; i < 3; i++) {
-                int dmg = 5;
-                diceNumber = gerador.nextInt(1, dmg);
-                System.out.print("[" + diceNumber + "]");
-                totalDamage += diceNumber;
-                if(diceNumber == 4){
-                    countDice += 1;
-                }
-            }
-            if(countDice == 3){
-                System.out.println();
-                System.out.println("Dano critico!");
-                for (int i = 0; i < 3; i++) {
-                    int dmg = 5;
-                    diceNumber = gerador.nextInt(1, dmg);
-                    System.out.print("[" + diceNumber + "]");
-                    totalDamage += diceNumber;
-                }
-            }
+
+            totalDamage = Actions.calculoDano(3, 5, totalDamage, gerador);
+
             System.out.println(" + 3");
             totalDamage += 3;
             System.out.println();
@@ -231,50 +126,18 @@ public class UserAction {
             System.out.println();
 
         } else if (escolha == 2) {
-            for (int i = 0; i < 5; i++) {
-                int dmg = 7;
-                diceNumber = gerador.nextInt(1, dmg);
-                System.out.print("[" + diceNumber + "]");
-                totalDamage += diceNumber;
-                if(diceNumber == 6){
-                    countDice += 1;
-                }
-            }
-            if(countDice == 4){
-                System.out.println();
-                System.out.println("Dano critico!");
-                for (int i = 0; i < 5; i++) {
-                    int dmg = 7;
-                    diceNumber = gerador.nextInt(1, dmg);
-                    System.out.print("[" + diceNumber + "]");
-                    totalDamage += diceNumber;
-                }
-            }
+
+            totalDamage = Actions.calculoDano(5, 7, totalDamage, gerador);
+
             System.out.println();
             System.out.println("Dano total: " + totalDamage + " + " + bonusDmg);
             totalDamage += bonusDmg;
             System.out.println();
 
         } else if (escolha == 3) {
-            for (int i = 0; i < 1; i++) {
-                int dmg = 5;
-                diceNumber = gerador.nextInt(1, dmg);
-                System.out.print("[" + diceNumber + "]");
-                totalDamage += diceNumber;
-                if(diceNumber == 4){
-                    countDice += 1;
-                }
-            }
-            if (countDice == 1){
-                System.out.println();
-                System.out.println("Dano critico!");
-                for (int i = 0; i < 1; i++) {
-                    int dmg = 5;
-                    diceNumber = gerador.nextInt(1, dmg);
-                    System.out.print("[" + diceNumber + "]");
-                    totalDamage += diceNumber;
-                }
-            }
+
+            totalDamage = Actions.calculoDano(1, 5, totalDamage, gerador);
+
             System.out.println();
             System.out.println("Dano total: " + totalDamage + " + " + bonusDmg);
             totalDamage += bonusDmg;
