@@ -4,9 +4,8 @@ public class UserAction {
 
     public static void atkActionPersonagem2(int escolha, Random gerador, Personagem personagem, Status statusPersonagem2) {
         int totalDamage = 0;
-        int diceNumber;
         int bonusDmg = 0;
-        int countDice = 0;
+
         for (int j = 1; j < statusPersonagem2.getStrenght() + 1; j++){
             if (j % 10 == 0){
                 bonusDmg += 1;
@@ -96,9 +95,8 @@ public class UserAction {
 
     public static void atkActionPersonagem1(int escolha, Random gerador, Personagem personagem, Status statusPersonagem1) {
         int totalDamage = 0;
-        int diceNumber;
         int bonusDmg = 0;
-        int countDice = 0;
+
 
         for (int j = 1; j < statusPersonagem1.getIntelligence() + 1; j++){
             if (j % 10 == 0){
