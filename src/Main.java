@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         Random gerador = new Random();
 
         Personagem personagem1 = new Personagem("Harumin", "Mage", 82, "Staff");
@@ -42,8 +41,6 @@ public class Main {
             System.out.println();
 
             String selectedSkill;
-            int atkDice;
-            int defDice;
             int escolha = escolherSkills(skillsPersonagem2.size());
 
 
