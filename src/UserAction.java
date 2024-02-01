@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class UserAction {
 
-    public static void atkActionPersonagem2(int escolha, Random gerador, Personagem personagem, Status statusPersonagem2) {
+    public static void atkActionPersonagem2(int escolha, Random gerador, Monster monstro, Status statusPersonagem2) {
         int totalDamage = 0;
         int bonusDmg = 0;
 
@@ -48,10 +48,10 @@ public class UserAction {
                 return;
         }
 
-        atkAction2(gerador, personagem, totalDamage);
+        atkAction2(gerador, monstro, totalDamage);
     }
 
-    private static void atkAction2(Random gerador, Personagem personagem1, int totalDamage) {
+    private static void atkAction2(Random gerador, Monster monstro1, int totalDamage) {
         int atkDice;
         int defDice;
         atkDice = gerador.nextInt(1, 21);
@@ -60,19 +60,25 @@ public class UserAction {
         System.out.println("defDice = [" + defDice + "]");
 
         if (atkDice >= defDice) {
+            if(atkDice == 20){
+                totalDamage *= 2;
+            }
             System.out.println();
-            personagem1.setHitDie(personagem1.getHitDie() - totalDamage);
-            System.out.println(personagem1.getNome() + " recebeu " + totalDamage + " de dano");
-            System.out.println(personagem1.getNome() + " agora possui " + personagem1.getHitDie() + " de vida");
+            monstro1.setHitDie(monstro1.getHitDie() - totalDamage);
+            System.out.println(monstro1.getNome() + " recebeu " + totalDamage + " de dano");
+            System.out.println(monstro1.getNome() + " agora possui " + monstro1.getHitDie() + " de vida");
         } else {
+            if(defDice == 20){
+                totalDamage = 0;
+            }
             System.out.println();
-            personagem1.setHitDie(personagem1.getHitDie() - (totalDamage / 2));
-            System.out.println(personagem1.getNome() + " recebeu " + (totalDamage / 2) + " de dano");
-            System.out.println(personagem1.getNome() + " agora possui " + personagem1.getHitDie() + " de vida");
+            monstro1.setHitDie(monstro1.getHitDie() - (totalDamage / 2));
+            System.out.println(monstro1.getNome() + " recebeu " + (totalDamage / 2) + " de dano");
+            System.out.println(monstro1.getNome() + " agora possui " + monstro1.getHitDie() + " de vida");
         }
     }
 
-    private static void atkAction1(Random gerador, Personagem personagem2, int totalDamage) {
+    private static void atkAction1(Random gerador, Monster monstro1, int totalDamage) {
         int atkDice;
         int defDice;
         atkDice = gerador.nextInt(1, 21);
@@ -81,19 +87,25 @@ public class UserAction {
         System.out.println("defDice = [" + defDice + "]");
 
         if (atkDice >= defDice) {
+            if(atkDice == 20){
+                totalDamage *= 2;
+            }
             System.out.println();
-            personagem2.setHitDie(personagem2.getHitDie() - totalDamage);
-            System.out.println(personagem2.getNome() + " recebeu " + totalDamage + " de dano");
-            System.out.println(personagem2.getNome() + " agora possui " + personagem2.getHitDie() + " de vida");
+            monstro1.setHitDie(monstro1.getHitDie() - totalDamage);
+            System.out.println(monstro1.getNome() + " recebeu " + totalDamage + " de dano");
+            System.out.println(monstro1.getNome() + " agora possui " + monstro1.getHitDie() + " de vida");
         } else {
+            if(defDice == 20){
+                totalDamage = 0;
+            }
             System.out.println();
-            personagem2.setHitDie(personagem2.getHitDie() - (totalDamage / 2));
-            System.out.println(personagem2.getNome() + " recebeu " + (totalDamage / 2) + " de dano");
-            System.out.println(personagem2.getNome() + " agora possui " + personagem2.getHitDie() + " de vida");
+            monstro1.setHitDie(monstro1.getHitDie() - (totalDamage / 2));
+            System.out.println(monstro1.getNome() + " recebeu " + (totalDamage / 2) + " de dano");
+            System.out.println(monstro1.getNome() + " agora possui " + monstro1.getHitDie() + " de vida");
         }
     }
 
-    public static void atkActionPersonagem1(int escolha, Random gerador, Personagem personagem, Status statusPersonagem1) {
+    public static void atkActionPersonagem1(int escolha, Random gerador, Monster monstro, Status statusPersonagem1) {
         int totalDamage = 0;
         int bonusDmg = 0;
 
@@ -145,7 +157,7 @@ public class UserAction {
             System.out.println("Escolha inválida!");
             return;
         }
-        atkAction1(gerador, personagem, totalDamage);
+        atkAction1(gerador, monstro, totalDamage);
     }
 }
 

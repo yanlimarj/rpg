@@ -9,9 +9,16 @@ public class Main {
 
         Personagem personagem1 = new Personagem("Harumin", "Mage", 82, "Staff");
         Personagem personagem2 = new Personagem("Natsume", "Archer", 124, "Bow");
+        Monster monstro1 = new Monster("Sombragor", "Demon", 50);
         Status statusPersonagem1 = new Status(8, 20, 14, 10);
         Status statusPersonagem2 = new Status(20, 6, 10, 12);
 
+
+        ArrayList<String> skillsMonstro1 = new ArrayList<>();
+        skillsMonstro1.add("Dark Blade"); // 2d6
+        skillsMonstro1.add("Haunt"); // 3d4
+        skillsMonstro1.add("Dark Cover"); // 2d8
+        skillsMonstro1.add("Drain Life"); // 2d10
 
         ArrayList<String> skillsPersonagem1 = new ArrayList<>();
         skillsPersonagem1.add("Frostbite"); //  3d6
@@ -26,7 +33,7 @@ public class Main {
         skillsPersonagem2.add("Basic Atk"); // 1d8
 
 
-        while (personagem1.getHitDie() >= 0 && personagem2.getHitDie() >= 0) {
+        while ((personagem1.getHitDie() >= 0 || personagem2.getHitDie() >= 0) && monstro1.getHitDie() >= 0) {
 
             System.out.println("Vez da --- " + personagem2.getNome() + " ---");
             System.out.println();
@@ -46,10 +53,10 @@ public class Main {
 
                 selectedSkill = obterNomeSkills(skillsPersonagem2, escolha);
                 System.out.println(personagem2.getNome() + " usou " + selectedSkill + "!");
-                UserAction.atkActionPersonagem2(escolha, gerador, personagem1, statusPersonagem2);
+                UserAction.atkActionPersonagem2(escolha, gerador, monstro1, statusPersonagem2);
                 System.out.println();
 
-                if (personagem1.getHitDie() == 0) {
+                if (monstro1.getHitDie() <= 0) {
                     break;
                 }
             }
@@ -66,31 +73,50 @@ public class Main {
 
                 selectedSkill = obterNomeSkills(skillsPersonagem1, escolha);
                 System.out.println(personagem1.getNome() + " usou " + selectedSkill + "!");
-                UserAction.atkActionPersonagem1(escolha, gerador, personagem2, statusPersonagem1);
+                UserAction.atkActionPersonagem1(escolha, gerador, monstro1, statusPersonagem1);
 
 
             }
 
 
-            if (personagem2.getHitDie() == 0) {
+            if (monstro1.getHitDie() <= 0) {
+                break;
+            }
+
+            System.out.println("Vez do --- " + monstro1.getNome() + " ---");
+            System.out.println();
+
+            escolha = gerador.nextInt(0, 4);
+
+            if (escolha != -1) {
+
+                selectedSkill = obterNomeSkills(skillsMonstro1, escolha);
+                System.out.println(monstro1.getNome() + " usou " + selectedSkill + "!");
+                MonsterAction.monsterAction1(escolha, gerador, personagem1, personagem2);
+
+
+            }
+
+
+            if (personagem1.getHitDie() <= 0 && personagem2.getHitDie() <= 0) {
                 break;
             }
         }
 
 
 
-        if (personagem1.getHitDie() <= 0) {
-            System.out.println("Vitoria da " + personagem2.getNome());
+        if (monstro1.getHitDie() <= 0) {
+            System.out.println("Vitoria!");
         } else {
-            System.out.println("Vitoria da " + personagem1.getNome());
+            System.out.println("Derrota!");
         }
 
     }
 
 
-    public static void mostrarSkills(ArrayList<String> skillsPersonagem2) {
-        for (int i = 0; i < skillsPersonagem2.size(); i++) {
-            System.out.println((i + 1) + ". " + skillsPersonagem2.get(i));
+    public static void mostrarSkills(ArrayList<String> skillsPersonagem) {
+        for (int i = 0; i < skillsPersonagem.size(); i++) {
+            System.out.println((i + 1) + ". " + skillsPersonagem.get(i));
         }
     }
 
