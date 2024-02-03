@@ -1,7 +1,8 @@
+import java.awt.*;
 import java.util.Random;
 
 public class MonsterAction {
-    public static void monsterAction1(int escolha, Random gerador, Personagem personagem1, Personagem personagem2){
+    public static void monsterAction1(int escolha, Random gerador, Personagem personagem1, Personagem personagem2, Monster monstro1){
 
         int totalDamage = 0;
 
@@ -37,14 +38,14 @@ public class MonsterAction {
             return;
         }
 
-        atkMonsterAction1(gerador, personagem1, personagem2, totalDamage);
+        atkMonsterAction1(gerador, personagem1, personagem2, totalDamage, escolha, monstro1);
 
 
 
 
     }
 
-    private static void atkMonsterAction1(Random gerador, Personagem personagem1, Personagem personagem2, int totalDamage) {
+    private static void atkMonsterAction1(Random gerador, Personagem personagem1, Personagem personagem2, int totalDamage, int escolha, Monster monstro1) {
         int atkDice;
         int defDice;
         String alvo;
@@ -72,6 +73,12 @@ public class MonsterAction {
             personagens[indiceAlvo].setHitDie(hitAlvo - totalDamage);
             System.out.println(alvo + " recebeu " + totalDamage + " de dano");
             System.out.println(alvo + " agora possui " + hitAlvo + " de vida");
+            System.out.println();
+            if(escolha == 3){
+                monstro1.setHitDie(monstro1.getHitDie() + totalDamage);
+                System.out.println(monstro1.getNome() + " curou " + totalDamage + " de vida");
+                System.out.println(monstro1.getNome() + " agora possui " + monstro1.getHitDie() + " de vida");
+            }
         } else {
             if(defDice == 20){
                 totalDamage = 0;

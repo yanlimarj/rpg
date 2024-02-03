@@ -89,7 +89,7 @@ public class Main {
 
                 selectedSkill = obterNomeSkills(skillsMonstro1, escolha);
                 System.out.println(monstro1.getNome() + " usou " + selectedSkill + "!");
-                MonsterAction.monsterAction1(escolha, gerador, personagem1, personagem2);
+                MonsterAction.monsterAction1(escolha, gerador, personagem1, personagem2, monstro1);
 
 
             }
