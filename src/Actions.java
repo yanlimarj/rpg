@@ -13,4 +13,15 @@ public class Actions {
         return totalDamage;
     }
 
+    public static int calculoCura (int x, int maxDiceNumber, int totalHeal, Random gerador){
+        int diceNumber;
+
+        for(int i = 0; i < x; i++){
+            diceNumber = gerador.nextInt(1, maxDiceNumber);
+            System.out.print("[" + diceNumber + "]");
+            totalHeal += diceNumber;
+        }
+        return totalHeal;
+    }
+
 }

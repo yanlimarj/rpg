@@ -8,9 +8,11 @@ public class Main {
 
         Personagem personagem1 = new Personagem("Harumin", "Mage", 82, "Staff");
         Personagem personagem2 = new Personagem("Natsume", "Archer", 124, "Bow");
+        Personagem personagem3 = new Personagem("Aurora", "Sacer", 100, "Staff");
         Monster monstro1 = new Monster("Sombragor", "Demon", 50);
         Status statusPersonagem1 = new Status(8, 20, 14, 10);
         Status statusPersonagem2 = new Status(20, 6, 10, 12);
+        Status statusPersonagem3 = new Status(8, 10, 20, 10);
 
 
         ArrayList<String> skillsMonstro1 = new ArrayList<>();
@@ -31,8 +33,14 @@ public class Main {
         skillsPersonagem2.add("Storm of Arrows"); // 3d6
         skillsPersonagem2.add("Basic Atk"); // 1d8
 
+        ArrayList<String> skillsPersonagem3 = new ArrayList<>();
+        skillsPersonagem3.add("Healing Light"); // Cura aliado
+        skillsPersonagem3.add("Protective Barrier"); // Buff de defesa
+        skillsPersonagem3.add("Revitalize"); // Cura gradual
+        skillsPersonagem3.add("Basic Atk"); // 1d6
 
-        while ((personagem1.getHitDie() >= 0 || personagem2.getHitDie() >= 0) && monstro1.getHitDie() >= 0) {
+
+        while ((personagem1.getHitDie() > 0 || personagem2.getHitDie() > 0 || personagem3.getHitDie() > 0) && monstro1.getHitDie() > 0) {
 
             System.out.println("Vez da --- " + personagem2.getNome() + " ---");
             System.out.println();
@@ -98,6 +106,30 @@ public class Main {
             if (personagem1.getHitDie() <= 0 && personagem2.getHitDie() <= 0) {
                 break;
             }
+
+            System.out.println("Vez da --- " + personagem3.getNome() + " ---");
+            System.out.println();
+            System.out.println("Habilidades disponíveis:");
+            mostrarSkills(skillsPersonagem3);
+            System.out.println();
+
+            escolha = escolherSkills(skillsPersonagem3.size());
+
+
+            System.out.println();
+
+            if (escolha != -1) {
+
+                selectedSkill = obterNomeSkills(skillsPersonagem3, escolha);
+                System.out.println(personagem2.getNome() + " usou " + selectedSkill + "!");
+                UserAction.atkActionPersonagem3(escolha, gerador, monstro1, personagem1, personagem2, personagem3, statusPersonagem3);
+                System.out.println();
+
+                if (monstro1.getHitDie() <= 0) {
+                    break;
+                }
+            }
+
         }
 
 

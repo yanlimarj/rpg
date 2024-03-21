@@ -1,18 +1,18 @@
 public class Status {
 
-    private int strenght;
-    private int intelligence;
-    private int wisdow;
-    private int concentration;
+    private Integer strenght;
+    private Integer intelligence;
+    private Integer wisdow;
+    private Integer concentration;
 
-    public Status(int strenght, int intelligence, int wisdow, int concentration) {
+    public Status(Integer strenght, Integer intelligence, Integer wisdow, Integer concentration) {
         this.strenght = strenght;
         this.intelligence = intelligence;
         this.wisdow = wisdow;
         this.concentration = concentration;
     }
 
-    public int getStrenght() {
+    public Integer getStrenght() {
         return strenght;
     }
 
